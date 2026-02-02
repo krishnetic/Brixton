@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishnetic Tech World | Future Defined</title>
+    <style>
+        :root {
+            --primary: #00f2fe;
+            --secondary: #4facfe;
+            --accent: #f093fb;
+            --dark: #0f172a;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+        }
+
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            filter: blur(80px);
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: float 20s infinite alternate;
+        }
+
+        @keyframes float {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(20%, 20%); }
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            padding: 2rem 10%;
+            align-items: center;
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero span {
+            color: var(--primary);
+            text-shadow: 0 0 20px rgba(0, 242, 254, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(79, 172, 254, 0.4);
+        }
+
+        /* Services Grid */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 5rem 10%;
+        }
+
+        .card {
+            background: var(--glass);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background 0.3s;
+        }
+
+        .card:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .card h3 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow">
+        <div class="blob"></div>
+    </div>
+
+    <nav>
+        <div class="logo">KRISHNETIC</div>
+        <ul class="nav-links">
+            <li>Home</li>
+            <li>Innovation</li>
+            <li>Solutions</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>Welcome to <br><span>Krishnetic Tech World</span></h1>
+        <p>We blend creativity with high-end technology to build the digital ecosystems of tomorrow.</p>
+        <button class="btn">Explore Our Universe</button>
+    </section>
+
+    <section class="services">
+        <div class="card">
+            <h3>Web 3.0</h3>
+            <p>Decentralized solutions for the modern internet age.</p>
+        </div>
+        <div class="card">
+            <h3>AI Logic</h3>
+            <p>Smart automation tailored for business growth.</p>
+        </div>
+        <div class="card">
+            <h3>Cyber Security</h3>
+            <p>Shielding your data with unbreakable encryption.</p>
+        </div>
+    </section>
+
+</body>
+</html>
