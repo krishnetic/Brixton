@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background: #ffffff;
+        }
+        .form-container {
+            width: 420px;
+            margin: 50px auto;
+            background: #02063c;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 12px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: rgb(255, 3, 3);
+        }
+        .my-form {
+            margin-bottom: 18px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: white;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            font-size: 14px;
+            border-radius: 8px;
+        }
+
+        /* Error msg space fixed */
+        .error {
+            color: red;
+            font-size: 13px;
+            height: 14px; 
+            margin-top: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #027e1b;
+            color: rgb(255, 255, 255);
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+        button:hover {
+            background: #ff0033;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Registration Form</h2>
+
+        <form id="regForm" novalidate>
+
+            <div class="my-form">
+                <label>Name</label>
+                <input type="text" id="name">
+                <div class="error" id="nameError"></div>
+            </div>
+
+            <div class="my-form">
+                <label>Email</label>
+                <input type="text" id="email">
+                <div class="error" id="emailError"></div>
+            </div>
+
+            <div class="my-form">
+                <label>Password</label>
+                <input type="password" id="password">
+                <div class="error" id="passwordError"></div>
+            </div>
+
+            <div class="my-form">
+                <label>Phone Number</label>
+                <input type="text" id="phone">
+                <div class="error" id="phoneError"></div>
+            </div>
+
+            <button type="submit">Register</button>
+        </form>
+    </div>
+
+    <script>
+    document.getElementById("regForm").addEventListener("submit", function(e) {
+        e.preventDefault(); // Stop submission
+
+        // input values
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+
+        // Error elements
+        const nameError = document.getElementById("nameError");
+        const emailError = document.getElementById("emailError");
+        const passwordError = document.getElementById("passwordError");
+        const phoneError = document.getElementById("phoneError");
+
+        // Clear and Errors msg
+        nameError.textContent = "";
+        emailError.textContent = "";
+        passwordError.textContent = "";
+        phoneError.textContent = "";
+
+        let valid = true;
+
+        // Regex patterns
+        const nameRegex = /^[A-Za-z]+(?: [A-Za-z]+)*$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
+        const phoneRegex = /^\d{10}$/;
+
+        // NAME
+        if (!nameRegex.test(name)) {
+            nameError.textContent = "Only letters allowed";
+            valid = false;
+        }
+
+        // EMAIL
+        if (!emailRegex.test(email)) {
+            emailError.textContent = "Invalid email format";
+            valid = false;
+        }
+
+        // PASSWORD
+        if (!passwordRegex.test(password)) {
+            passwordError.textContent =
+                "Min 8 chars, 1 uppercase, 1 number & 1 special character";
+            valid = false;
+        }
+
+        // PHONE
+        if (!phoneRegex.test(phone)) {
+            phoneError.textContent = "Phone must be exactly 10 digits";
+            valid = false;
+        }
+
+        // FINAL CHECK
+        if (valid) {
+            alert("Registration Successful!");
+            document.getElementById("regForm").reset();
+        }
+    });
+    </script>
+
+</body>
+</html>
